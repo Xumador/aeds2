@@ -28,8 +28,9 @@ int main()
     cout << "*p: " << *p << endl;
     cout << endl
          << "Vetores" << endl;
+    cout << "&v: " << &v << endl;
     for (int i = 0; i < 10; i++)
     {
-        cout << " i: " << i << "  v[i]: " << v[i] << "  &v[i]: " << &v[i] << endl;
+        cout << "i: " << i << "  v[i]: " << v[i] << "  &v[i]: " << &v[i] << endl;
     }
 }
