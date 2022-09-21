@@ -1,8 +1,10 @@
 #include <iostream>
 using namespace std;
 
-double x = 11, y = 22, z = 33;
-double *p; //(aponta para um local do tipo int)
+int x = 11, y = 22, z = 33;
+int *p; //(aponta para um local do tipo int)
+
+int v[]={50,51,52,53,54,55,56,57,58,59};
 
 int main()
 {
