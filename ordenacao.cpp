@@ -41,17 +41,17 @@ void insertionsort(int *v)
 }
 void pointerinsertionsort(int *v)
 {
-    int aux, *j;
+    int aux, *q;
     for (int *p = v + 1; p < v + 10; p++)
     {
         aux = *p;
-        j = p-1;
-        while (j >= v && *j > aux)
+        q = p-1;
+        while (q >= v && *q > aux)
         {
-            *(j + 1) = *j;
-            j--;
+            *(q + 1) = *q;
+            q--;
         }
-        *(j + 1) = aux;
+        *(q + 1) = aux;
     }
 }
 void pointerbubblesort(int *v)
