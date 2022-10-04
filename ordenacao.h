@@ -1,9 +1,56 @@
 #ifndef ORDENACAO_H
 #define ORDENACAO_H
-
 #include <iostream>
 using namespace std;
+void bubblesort(int *v)
+{
+    int aux;
+    for (int i = 9; i > 0; i--)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            if (v[j] > v[j + 1])
+            {
+                aux = v[j];
+                v[j] = v[j + 1];
+                v[j + 1] = aux;
+            }
+        }
+    }
+}
+void insertionsort(int *v)
 
+{
+    int aux, j;
+    for (int i = 1; i < 10; i++)
+    {
+        aux = v[i];
+        j = i - 1;
+        while (j >= 0 && v[j] > aux)
+        {
+            v[j + 1] = v[j];
+            j--;
+        }
+        v[j + 1] = aux;
+    }
+}
+void selectionsort(int *v)
+{
+    int aux, j, min;
+    for (int i = 0; i < 10; i++)
+    {
+        min = i;
+        aux = v[i];
+        for (int j = i + 1; j < 10; j++)
+            if (v[j] < aux)
+            {
+                aux = v[j];
+                min = j;
+            }
+        v[min] = v[i];
+        v[i] = aux;
+    }
+}
 void pointerselectionsort(int *v)
 {
     int aux, *q, *min;
@@ -52,5 +99,4 @@ void pointerbubblesort(int *v)
         }
     }
 }
-
 #endif
