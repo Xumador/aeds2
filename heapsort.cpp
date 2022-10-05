@@ -70,7 +70,7 @@ int main()
     int *v;
     // int v[] = {0, 3, 4, 6, 1, 2, 5, 7, 8, 9};
     // int a[4] = {0, 3, 4, 7};
-    // int b[6] = {1, 2, 5, 6, 8, 9};
+    int b[6] = {2, 1, 10, 6, 8, 9};
     // int c[10];
     // int i = 0, j = 0, k = 0;
     // int *p;
@@ -101,4 +101,8 @@ int main()
         // cout << endl;
     }
     cout << '\b' << "}" << endl;
+    quicksort(b,0,5);
+    for(int i =0; i < 6; i++){
+        cout << b[i] << " ";
+    }
 }
