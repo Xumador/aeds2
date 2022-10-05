@@ -3,8 +3,18 @@
 #include <stdlib.h>
 using namespace std;
 
-int inst = 0, tamanho;
+int inst = 0, tamanho=10;
 int *z;
+void debug(int p, int r, int v[])
+{
+    inst++;
+    cout << endl
+         << " " << inst << " instancia p= " << p << " r = " << r << " ->";
+    for (int *z = v; z < v + tamanho; z++)
+    {
+        cout << *z << " ";
+    }
+}
 int *inicializa(int tam)
 {
     int *v = (int *)malloc(tam * sizeof(int));
@@ -64,6 +74,7 @@ void quicksort(int v[], int p, int r)
         quicksort(v, p, j - 1);
         quicksort(v, j + 1, r);
     }
+    debug(r, p, v);
 }
 int main()
 {
@@ -101,8 +112,9 @@ int main()
         // cout << endl;
     }
     cout << '\b' << "}" << endl;
-    quicksort(b,0,5);
-    for(int i =0; i < 6; i++){
+    quicksort(b, 0, 5);
+    for (int i = 0; i < 6; i++)
+    {
         cout << b[i] << " ";
     }
 }
