@@ -17,8 +17,11 @@ int main()
     {
         cout << "ABRIU" << endl;
         while (!carrin.eof())
-
         {
+            for (Tveiculo *a = bd[0]; a < bd[0] + 50; a++)
+            {
+                // É POR AQUI
+            }
             carrin >> line;
             cout << " teste: " << line << endl;
         }
