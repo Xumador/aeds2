@@ -8,14 +8,40 @@ typedef struct Tveiculo // struct do tipo Tveiculo
     int ano, km, portas;
     float potencia;
 };
+Tveiculo *busca(Tveiculo *bd[], int tam, string placa)
+{
+    while (placa != bd[tam - 1]->placa)
+    {
+        cout << "Placa incorreta, tente novamente." << endl;
+        cin >> placa;
+    }
+    if (placa == bd[tam - 1]->placa)
+    {
+        cout << bd[tam - 1]->modelo << " ";
+        cout << bd[tam - 1]->marca << " ";
+        cout << bd[tam - 1]->tipo << " ";
+        cout << bd[tam - 1]->ano << " ";
+        cout << bd[tam - 1]->km << " ";
+        cout << bd[tam - 1]->potencia << " ";
+        cout << bd[tam - 1]->gas << " ";
+        cout << bd[tam - 1]->cambio << " ";
+        cout << bd[tam - 1]->direcao << " ";
+        cout << bd[tam - 1]->cor << " ";
+        cout << bd[tam - 1]->portas << " ";
+        cout << bd[tam - 1]->placa << endl;
+    }
+}
 
-int main() {
-    ifstream carrin ("carro.txt");
+int main()
+{
+    ifstream carrin("carro.txt");
     Tveiculo *bd[50]; // ponteiro de Tveiculo
     int tam = 0;
-    if (carrin.is_open()) {
+    if (carrin.is_open())
+    {
         cout << "ABRIU" << endl;
-        while (!carrin.eof()) {
+        while (!carrin.eof())
+        {
             bd[tam] = new Tveiculo; // cria a struct que sera apontada pelo vetor de ponteiro bd
             carrin >> bd[tam]->modelo;
             carrin >> bd[tam]->marca;
@@ -32,7 +58,8 @@ int main() {
             tam++;
         }
         carrin.close();
-        for (int i = 0; i < tam; i++) {
+        /*for (int i = 0; i < tam; i++)
+        {
             cout << bd[i]->modelo << " ";
             cout << bd[i]->marca << " ";
             cout << bd[i]->tipo << " ";
@@ -45,15 +72,34 @@ int main() {
             cout << bd[i]->cor << " ";
             cout << bd[i]->portas << " ";
             cout << bd[i]->placa << endl;
-        }
-        //atribuindo NULL aos espaços livres
-        for (int i = tam; i < 50; i++) {
+        }*/
+        // atribuindo NULL aos espaços livres
+        for (int i = tam; i < 50; i++)
+        {
             bd[i] = NULL;
         }
         // Removendo as structs da memória
-        for (int i = 0; i < tam; i++) {
-            delete(bd[i]);
+        for (int i = 0; i < tam; i++)
+        {
+            delete (bd[i]);
         }
-    } else
+    }
+    else
         cout << "N ABRIU" << endl;
+    char a;
+    cout << "Deseja realizar uma busca? [Sim(s)/Não(n)]"; // A = 65
+    cin >> a;
+    while (a != 'A' + 50 && a != 'A' + 18 && a != 'A' + 45 && a != 'A' + 13)
+    {
+        cout << "Entrada inválida, tente novamente." << endl
+             << "[S/n]: ";
+        cin >> a;
+    }
+    if (a == 's' || a == 'S')
+    {
+        int pos;
+        string plate;
+        cin >> pos >> plate;
+        busca(bd, pos, plate);
+    }
 }
