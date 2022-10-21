@@ -10,25 +10,30 @@ typedef struct Tveiculo // struct do tipo Tveiculo
 };
 Tveiculo *busca(Tveiculo *bd[], int tam, string placa)
 {
-    while (placa != bd[tam - 1]->placa)
+    int loc = 0;
+    for (int i = 0; i < tam; i++)
     {
-        cout << "Placa incorreta, tente novamente." << endl;
-        cin >> placa;
+        if (bd[i]->placa == placa)
+        {
+            cout << "Veiculo Encontrado!" << endl;
+            cout << bd[i]->modelo << " ";
+            cout << bd[i]->marca << " ";
+            cout << bd[i]->tipo << " ";
+            cout << bd[i]->ano << " ";
+            cout << bd[i]->km << " ";
+            cout << bd[i]->potencia << " ";
+            cout << bd[i]->gas << " ";
+            cout << bd[i]->cambio << " ";
+            cout << bd[i]->direcao << " ";
+            cout << bd[i]->cor << " ";
+            cout << bd[i]->portas << " ";
+            cout << bd[i]->placa << endl;
+            loc = 1;
+        }
     }
-    if (placa == bd[tam - 1]->placa)
+    if (loc == 0)
     {
-        cout << bd[tam - 1]->modelo << " ";
-        cout << bd[tam - 1]->marca << " ";
-        cout << bd[tam - 1]->tipo << " ";
-        cout << bd[tam - 1]->ano << " ";
-        cout << bd[tam - 1]->km << " ";
-        cout << bd[tam - 1]->potencia << " ";
-        cout << bd[tam - 1]->gas << " ";
-        cout << bd[tam - 1]->cambio << " ";
-        cout << bd[tam - 1]->direcao << " ";
-        cout << bd[tam - 1]->cor << " ";
-        cout << bd[tam - 1]->portas << " ";
-        cout << bd[tam - 1]->placa << endl;
+        cout << "Veiculo nao encontrado." << endl;
     }
 }
 
@@ -73,33 +78,35 @@ int main()
             cout << bd[i]->portas << " ";
             cout << bd[i]->placa << endl;
         }*/
+
         // atribuindo NULL aos espaços livres
         for (int i = tam; i < 50; i++)
         {
             bd[i] = NULL;
         }
+
         // Removendo as structs da memória
         for (int i = 0; i < tam; i++)
         {
             delete (bd[i]);
         }
+        char a;
+        cout << "Deseja realizar uma busca? [S/n]" << endl;
+        cin >> a;
+        while (a != 'A' + 50 && a != 'A' + 18 && a != 'A' + 45 && a != 'A' + 13) // A = 65 na tabela ASCII
+        {
+            cout << "Entrada inválida, tente novamente." << endl
+                 << "[S/n]" << endl;
+            cin >> a;
+        }
+        if (a == 's' || a == 'S')
+        {
+            string plate;
+            cout << "Informe a placa do veiculo: ";
+            cin >> plate;
+            busca(bd, tam, plate);
+        }
     }
     else
         cout << "N ABRIU" << endl;
-    char a;
-    cout << "Deseja realizar uma busca? [Sim(s)/Não(n)]"; // A = 65
-    cin >> a;
-    while (a != 'A' + 50 && a != 'A' + 18 && a != 'A' + 45 && a != 'A' + 13)
-    {
-        cout << "Entrada inválida, tente novamente." << endl
-             << "[S/n]: ";
-        cin >> a;
-    }
-    if (a == 's' || a == 'S')
-    {
-        int pos;
-        string plate;
-        cin >> pos >> plate;
-        busca(bd, pos, plate);
-    }
 }
