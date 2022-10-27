@@ -86,12 +86,17 @@ Tveiculo *busca_valor(Tveiculo *ord[], int tam, int valor) {
     m2 = menor_index + 1;
     while (l <= 10)
     {
-        if(fit[m1] >= fit[m2]) {
+        if(fit[m1] <= fit[m2] && m1 > 0) {
             busca[l] = ord[m1];
-            
+            m1 -= 1;
+        } 
+        if(fit[m2] < fit[m1] && m2 < tam) {
+            busca[l] = ord[m2];
+            m2 += 1;
         }
+        l++;
     }
-    
+    return *busca;
 }
 
 
